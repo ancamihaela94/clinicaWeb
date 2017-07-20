@@ -24,6 +24,7 @@ Route::middleware('guest')->get('/test',function(){
 
 // Auth routes
 Route::middleware('guest')->post('/login', 'Auth\LoginController@apiLogin');
+Route::middleware('guest')->post('/register', 'Auth\RegisterController@apiRegister');
 
 // Cities routes
 Route::middleware('guest')->get('/cities', 'CitiesController@apiIndex');

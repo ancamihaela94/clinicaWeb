@@ -53,9 +53,11 @@ class LoginController extends Controller
 
         // todo validation (dar cum ne verificai noua pe cosquare, nu lejereanu)
 
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => User::STATUS_ACTIVE])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => User::STATUS_ACTIVE],true)) {
             // Authentication passed...
-            $response = ['status' => 200];
+            $user = User::getUserByEmail($email);
+            $response = ['status' => 200,
+                'user' => $user ];
         } else {
             $response = [
                 'status' => 400,

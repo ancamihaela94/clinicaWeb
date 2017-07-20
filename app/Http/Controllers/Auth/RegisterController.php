@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -67,5 +70,32 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+
+    /**
+     * Api login method
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function apiRegister(Request $request)
+    {
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $user = User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+        ]);
+
+        Auth::login($user,true);
+
+        $response = ['status' => 201, 'token'=>$user->remember_token];
+
+
+        return $response;
     }
 }

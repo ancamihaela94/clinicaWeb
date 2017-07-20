@@ -46,11 +46,11 @@ class Medic extends Model
         return $medics;
     }
 
-    public function updateMedic($id, $status) {
+    public function updateMedic($id, $status, $phoneNo) {
 
         $update = DB::table('users')
             -> where ('id', $id)
-            -> update (['status' => $status,  'updated_at' => Carbon::now()]);
+            -> update (['status' => $status, 'phone_number' =>$phoneNo,  'updated_at' => Carbon::now()]);
         return $update;
     }
 

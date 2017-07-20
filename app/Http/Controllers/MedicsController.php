@@ -45,9 +45,61 @@ class MedicsController extends Controller
         else {
             $medics = new Medic();
             $data = $medics->createMedic($medicName, $email, $password, $phone_no, $status);
-            Session::flash('flash_message','Clinica a fost salvata cu succes!' );
+            Session::flash('flash_message','Cadrul medical a fost salvata cu succes!' );
 
         }
         return redirect('/medics');
     }
+
+
+
+    public function show($id)
+    {
+        $medics = new Medic();
+        $data = $medics->getMedic($id);
+        if ($data) {
+            return view('medics/edit')->with('medic',$data);
+        }
+        else {
+            Session::flash('error_message','Cadrul medical nu a putut fi gasit!' );
+            return redirect('/medics');
+        }
+
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $status = $request->input('status');
+        $phoneNo = $request->input('phoneNo');
+        $medic = new Medic();
+        $medicExists = $medic->getMedic($id);
+        if (empty($status) || empty($phoneNo) || is_null($medicExists)) {
+            Session::flash('error_message','Cadrul medical nu a putut fi editat! Te rugam sa verifici datele introduse!' );
+        }
+        else {
+
+            $data = $medic->updateMedic($id, $status, $phoneNo);
+            Session::flash('flash_message','Cadrul medical a fost editat cu succes!' );
+        }
+        return redirect('/medics');
+    }
+
+
+    public function delete($id)
+    {
+
+        $medic = new Medic();
+        $data = $medic->getMedic($id);
+        if ($data) {
+            $data = $medic->deleteMedic($id);
+            Session::flash('flash_message','Cadrul medical a fost stears cu succes!' );
+        }
+        else {
+            Session::flash('error_message','Cadrul medical nu a putut fi stears!' );
+        }
+
+        return redirect('/medic');
+    }
+
 }
