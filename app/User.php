@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -60,5 +61,27 @@ class User extends Authenticatable
             ->get();
         return $user;
 
+    }
+
+    public function getUsers(){
+        $user = DB::table('users')
+            ->select('id', 'name', 'email', 'phone_number','status')
+            ->where('type', '=', 3)
+            ->get();
+        return $user;
+    }
+
+    public function getUser($id) {
+
+        $user =DB::table('users')->find($id);
+        return $user;
+    }
+
+    public function updateUser($id, $status) {
+
+        $update = DB::table('users')
+            -> where ('id', $id)
+            -> update (['status' => $status, 'updated_at' => Carbon::now()]);
+        return $update;
     }
 }

@@ -68,9 +68,22 @@ Route::get('/medics/delete/{id}', 'MedicsController@delete')->middleware('auth')
 //--------------------------------------------------------------------------------------
 
 
+//Users page routes
+Route::get('/users', 'UsersController@index')->middleware('auth');
+
+//Route::get('/users/add', 'UsersController@add')->middleware('auth');
+//Route::post('/users/add', 'UsersController@create')->middleware('auth');
+
+Route::get('/users/edit/{id}', 'UsersController@show')->middleware('auth');
+Route::post('/users/edit/{id}', 'UsersController@update')->middleware('auth');
+
+//Route::get('/users/delete/{id}', 'UsersController@delete')->middleware('auth');
+//--------------------------------------------------------------------------------------
 
 
-Route::get('/users', 'UsersController@index');
+
+
+
 Route::get('/appointments', 'AppointmentsController@index');
 Route::get('/records', 'RecordsController@index');
 
