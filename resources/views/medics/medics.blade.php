@@ -39,7 +39,7 @@
                                     {
                                         echo " <th> Activ </th>";
                                     }
-                                    else echo "<th> Inctiv </th>";
+                                    else echo "<th> Inactiv </th>";
                                 @endphp
                                 <th> {{$medic['section_name']}}</th>
                                 <th>

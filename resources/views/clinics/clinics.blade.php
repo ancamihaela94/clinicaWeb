@@ -36,7 +36,7 @@
                                 {
                                     echo " <th> Activ </th>";
                                 }
-                                else echo "<th> Inctiv </th>";
+                                else echo "<th> Inactiv </th>";
                                 @endphp
                                 <th>
                                     <a href = '/clinics/edit/{{$clinic['id']}}'><i class="icon-edit"></i> Editeaza</a>
