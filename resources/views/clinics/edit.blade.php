@@ -7,7 +7,7 @@
     <div class="row", style = 'margin-top: 50px;'>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Cities</div>
+                <div class="panel-heading">Clinici</div>
                 <td class="panel-body">
                     <h3> Editare Clinica {{$clinic->name}} </h3>
                     <form method ='post' action = "{{action('ClinicsController@update', $clinic->id)}}">

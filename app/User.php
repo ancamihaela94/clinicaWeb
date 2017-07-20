@@ -45,6 +45,7 @@ class User extends Authenticatable
     public static function getUserByEmail($email) {
 
         $user = DB::table('users')
+            ->select('id', 'name', 'email', 'type', 'remember_token')
             ->where('email', '=', $email)
             ->get();
         return $user;
@@ -54,6 +55,7 @@ class User extends Authenticatable
     public static function getUserByToken($token) {
 
         $user = DB::table('users')
+            ->select('id', 'name', 'email', 'type', 'remember_token')
             ->where('token', '=', $token)
             ->get();
         return $user;

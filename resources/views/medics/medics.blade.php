@@ -12,7 +12,7 @@
 
     <div class="row", style = 'margin-top: 50px;'>
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="margin-left: -100px;margin-right: -100px;">
                 <div class="panel-heading">Cadre medicale</div>
                 <td class="panel-body">
                     <table class = "table">
@@ -23,8 +23,8 @@
                             <th> Email </th>
                             <th> Nr. Telefon </th>
                             <th> Status </th>
-                            <th> Actiuni</th>
                             <th> Sectie </th>
+                            <th> Actiuni</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,7 +41,7 @@
                                     }
                                     else echo "<th> Inctiv </th>";
                                 @endphp
-                                {{--<th> {{$medic['section']}}</th>--}}
+                                <th> {{$medic['section_name']}}</th>
                                 <th>
                                     <a href = '/medics/edit/{{$medic['id']}}'><i class="icon-edit"></i> Editeaza</a>
                                     <a href = '/medics/delete/{{$medic['id']}}' style = "padding-left: 10px;"><i class="icon-trash"></i> Sterge</a>
@@ -52,7 +52,7 @@
                         </tbody>
                     </table>
                 </div>
-            <a href="/medics/add"> Adauga un nou cadru medical </a>
+            <a href="/medics/add" style = "margin-left: -100px;"> Adauga un nou cadru medical </a>
             </div>
         </div>
     </div>

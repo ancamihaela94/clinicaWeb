@@ -32,10 +32,10 @@ class Medic extends Model
          return $medics;
      }
 
-    public function createMedic($medicName, $email, $password, $phone_no, $status) {
+    public function createMedic($medicName, $email, $password, $phone_no, $status, $section) {
 
         $medics = DB::table('users')->insert(
-            ['name' => $medicName,'email' => $email, 'password'=> $password, 'phone_number' => $phone_no, 'status' => $status, 'type' => 2, 'created_at' => Carbon::now(),'updated_at' => Carbon::now() ]
+            ['name' => $medicName,'email' => $email, 'password'=> $password, 'phone_number' => $phone_no, 'status' => $status, 'type' => 2, 'section_id'=>$section, 'created_at' => Carbon::now(),'updated_at' => Carbon::now() ]
         );
         return $medics;
     }
@@ -50,7 +50,7 @@ class Medic extends Model
 
         $update = DB::table('users')
             -> where ('id', $id)
-            -> update (['status' => $status, 'phone_number' =>$phoneNo,  'updated_at' => Carbon::now()]);
+            -> update (['status' => $status, 'phone_number' =>$phoneNo, 'updated_at' => Carbon::now()]);
         return $update;
     }
 
@@ -59,4 +59,15 @@ class Medic extends Model
         $delete = DB::table('users')->where('id',$id)->delete();
         return $delete;
     }
+
+    public function getUserSection(){
+
+        $sections = Medic::join('sections', 'users.section_id', '=', 'sections.id')
+            ->select(['users.id', 'users.name', 'users.email','users.phone_number','users.status', 'sections.name as section_name'])
+            ->where('type', '=', 2)
+            ->get();
+        return $sections;
+
+    }
+
 }
