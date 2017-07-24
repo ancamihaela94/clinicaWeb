@@ -89,6 +89,18 @@ Route::post('/users/edit/{id}', 'UsersController@update')->middleware('auth');
 //Route::get('/users/delete/{id}', 'UsersController@delete')->middleware('auth');
 //--------------------------------------------------------------------------------------
 
+//Appointments routes
+Route::get('/appointments', 'AppointmentsController@index')->middleware('auth');
+
+Route::get('/appointments/add', 'AppointmentsController@add')->middleware('auth');
+Route::post('/appointments/add', 'AppointmentsController@create')->middleware('auth');
+
+Route::get('/appointments/edit/{id}', 'AppointmentsController@show')->middleware('auth');
+Route::post('/appointments/edit/{id}', 'AppointmentsController@update')->middleware('auth');
+
+Route::get('/appointments/delete/{id}', 'AppointmentsController@delete')->middleware('auth');
+
+
 
 
 
