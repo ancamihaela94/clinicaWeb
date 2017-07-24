@@ -97,4 +97,22 @@ class Clinic extends Model
         $delete = DB::table('clinics')->where('id',$id)->delete();
         return $delete;
     }
+
+    public function getSections($id) {
+        $clinic = DB::table('sections')
+            ->join('clinics_sections', 'sections.id', '=', 'clinics_sections.section_id')
+            ->join('clinics', 'clinics.id', '=', 'clinics_sections.clinic_id')
+            ->select('sections.id', 'sections.name')
+            ->where('clinics.id', '=', $id)
+            ->get();
+        return $clinic;
+    }
+
+    public function associateSection($clinic_id, $section_id) {
+        $clinic = DB::table('clinics_sections')
+            ->insert(['section_id' => $section_id, 'clinic_id' => $clinic_id, 'created_at' => Carbon::now(),'updated_at' => Carbon::now() ]);
+        return $clinic;
+    }
+
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Clinic;
 use App\City;
+use App\Section;
 use Illuminate\Support\Facades\Session;
 
 
@@ -100,6 +101,77 @@ class ClinicsController extends Controller
         return redirect('/clinics');
     }
 
+    public function showAssociateSections($id) {
+
+        $clinic = new Clinic();
+        $clinicData = $clinic->getClinic($id);
+        $data = $clinic->getSections($id);
+        if ($data) {
+            return view('clinics/showSections')->with(['sections' => json_decode($data, true),
+                'clinics' =>$clinicData
+
+            ]);
+        }
+        else {
+            Session::flash('error_message','Clinica nu a putut fi gasita!' );
+            return redirect('/clinics');
+        }
+
+    }
+
+
+    public function formAssociateSections($clinic_id){
+
+
+//        $citiesModel = new City();
+//        $cities = $citiesModel->getAllCities();
+//        return view('clinics/create')->with([
+//            'cities' => $cities
+//        ]);
+        $sectionsModel = new Section();
+        $sections = $sectionsModel->getAllSections();
+        $clinic = new Clinic();
+        $data = $clinic->getClinic($clinic_id);
+        if ($data) {
+            return view('clinics/associateSections')->with(['clinics' => $data,
+                'sections' => $sections]);
+        }
+        else {
+            Session::flash('error_message','Clinica nu a putut fi gasita!' );
+            return redirect('/clinics');
+        }
+
+    }
+
+    public function associateSections(Request $request, $id)
+    {
+
+        $section_id = $request->input('section_id');
+        $clinic = new Clinic();
+        $clinicExists = $clinic->getClinic($id);
+
+        if (empty($section_id) || empty($id) || empty($clinicExists)) {
+
+            Session::flash('error_message', 'Sectia nu a putut fi adaugata!');
+            return redirect()->route('showSections', $id);
+        } else {
+            $clinic = new Clinic();
+            $sectionAssociate = $clinic->associateSection($id, $section_id);
+            Session::flash('flash_message', 'Sectia a fost adaugata cu succes a fost salvata cu succes!');
+            return redirect()->route('showSections', $id);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    // API METHODS
     /**
      * Display a listing of the resource.
      *

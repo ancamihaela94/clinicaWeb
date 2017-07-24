@@ -11,8 +11,8 @@
 
 
     <div class="row", style = 'margin-top: 50px;'>
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+        <div class="col-md-8 col-md-offset-2" >
+            <div class="panel panel-default"style = "margin-left: -100px; margin-right:-100px;" >
                 <div class="panel-heading">Clinici</div>
                 <td class="panel-body">
                     <table class = "table">
@@ -40,7 +40,8 @@
                                 @endphp
                                 <th>
                                     <a href = '/clinics/edit/{{$clinic['id']}}'><i class="icon-edit"></i> Editeaza</a>
-                                    <a href = '/clinics/delete/{{$clinic['id']}}' style = "padding-left: 10px;"><i class="icon-trash"></i> Sterge</a>
+                                    <a href = '/clinics/show-sections/{{$clinic['id']}}'style="padding-left: 20px;"><i class="fa fa-bars" aria-hidden="true"></i> Asociere Sectii</a>
+                                    <a href = '/clinics/delete/{{$clinic['id']}}' style = "padding-left: 20px;"><i class="icon-trash"></i> Sterge</a>
                                 </th>
                             </tr>
                             @endforeach
@@ -48,9 +49,9 @@
                         </tbody>
                     </table>
                 </div>
-            <a href="/clinics/add"> Adauga o clinica noua </a>
+            <a href="/clinics/add", style="margin-left:-100px"> Adauga o clinica noua </a>
             </div>
         </div>
     </div>
-</div>
+
 @endsection

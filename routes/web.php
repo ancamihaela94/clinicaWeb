@@ -41,6 +41,15 @@ Route::get('/clinics/edit/{id}', 'ClinicsController@show')->middleware('auth');
 Route::post('/clinics/edit/{id}', 'ClinicsController@update')->middleware('auth');
 
 Route::get('/clinics/delete/{id}', 'ClinicsController@delete')->middleware('auth');
+
+
+
+
+Route::get('/clinics/show-sections/{id}', 'ClinicsController@showAssociateSections')->middleware('auth')->name('showSections');
+Route::get('/clinics/add-sections/{id}', 'ClinicsController@formAssociateSections')->middleware('auth');
+Route::post('/clinics/add-sections/{id}', 'ClinicsController@associateSections')->middleware('auth');
+
+
 //--------------------------------------------------------------------------------------
 
 //Section page routes
