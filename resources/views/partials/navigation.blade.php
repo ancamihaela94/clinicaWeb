@@ -8,9 +8,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/home">Dashboard</a>
+            {{--<a class="navbar-brand" href="/home">Dashboard</a>--}}
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+            <a class="navbar-brand" href="/home">Dashboard</a>
             <ul class="nav navbar-nav" style = "margin-top:5px">
                 <li><a href="/cities">Locatii</a></li>
                 <li><a href="/clinics">Clinici</a></li>
