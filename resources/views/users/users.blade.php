@@ -41,6 +41,7 @@
                                     else echo "<th> Inactiv </th>";
                                 @endphp
                                 <th><a href = '/users/edit/{{$user['id']}}'><i class="icon-edit"></i> Editeaza</a></th>
+                                <th><a href = '/records/show-records/{{$user['id']}}'><i class="fa fa-eye" aria-hidden="true"></i> Fisa Medicala</a></th>
                             </tr>
                             @endforeach
 

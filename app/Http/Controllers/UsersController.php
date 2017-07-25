@@ -9,16 +9,6 @@ use Illuminate\Support\Facades\Session;
 class UsersController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -27,6 +17,7 @@ class UsersController extends Controller
     {
         $users = new User();
         $data = $users->getUsers();
+
         return view ('users/users') -> with([
             'users' => json_decode($data, true)
         ]);
@@ -68,6 +59,5 @@ class UsersController extends Controller
         }
         return redirect('/users');
     }
-
 
 }

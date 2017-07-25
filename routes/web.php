@@ -100,11 +100,23 @@ Route::post('/appointments/edit/{id}', 'AppointmentsController@update')->middlew
 
 Route::get('/appointments/delete/{id}', 'AppointmentsController@delete')->middleware('auth');
 
+//--------------------------------------------------------------------------------------
 
 
+//Records routes
+//Route::get('/records', 'RecordsController@index')->middleware('auth');
+
+//Route::get('/records/add', 'RecordsController@add')->middleware('auth');
+//Route::post('/records/add', 'RecordsController@create')->middleware('auth');
+
+//Route::get('/records/edit/{id}', 'RecordsController@show')->middleware('auth');
+//Route::post('/records/edit/{id}', 'RecordsController@update')->middleware('auth');
+//
+//Route::get('/records/delete/{id}', 'RecordsController@delete')->middleware('auth');
+
+Route::get('/records/show-records/{id}', 'RecordsController@showRecords')->middleware('auth')->name('showRecords');
+Route::get('/records/add-records/{id}', 'RecordsController@addRecords')->middleware('auth');
+Route::post('/records/add-records/{id}', 'RecordsController@createRecords')->middleware('auth')->name('addRecords');
 
 
-
-Route::get('/appointments', 'AppointmentsController@index');
-Route::get('/records', 'RecordsController@index');
-
+//--------------------------------------------------------------------------------------

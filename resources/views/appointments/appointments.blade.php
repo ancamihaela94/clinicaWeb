@@ -12,7 +12,7 @@
 
     <div class="row", style = 'margin-top: 50px;'>
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="margin-left: -100px;margin-right: -100px;">
                 <div class="panel-heading">Locatii</div>
                 <td class="panel-body">
                     <table class = "table">

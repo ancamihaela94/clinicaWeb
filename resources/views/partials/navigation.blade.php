@@ -18,7 +18,7 @@
                 <li><a href="/medics">Medici</a></li>
                 <li><a href="/users">Utilizatori</a></li>
                 <li><a href="/appointments">Programari</a></li>
-                <li><a href="/records">Fise Medicale</a></li>
+                {{--<li><a href="/records">Fise Medicale</a></li>--}}
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">

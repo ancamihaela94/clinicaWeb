@@ -53,14 +53,6 @@ class Appointment extends Model
         return $update;
     }
 
-    public function getUsers(){
-        $users = DB::table('users')
-            -> join('appointments', 'appointments.user_id', '=', 'users.id')
-            ->select(['users.name', 'users.id'])
-            ->where('type','=', 3)
-            ->get();
-    }
-
     public function getAppointments() {
 
         $appointments = DB::table('appointments')
