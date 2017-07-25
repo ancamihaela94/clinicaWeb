@@ -110,4 +110,131 @@ class MedicsController extends Controller
         return redirect('/medics');
     }
 
+
+
+
+
+
+    //------------------------------------------------------------------------------------
+
+
+    // API METHODS
+
+    public function apiIndex()
+    {
+        $medics = new Medic();
+        $data = $medics->getAllMedics();
+
+        $response = [
+            'status' => 200,
+            'data' => $data
+        ];
+
+        return $response;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+//    public function apiCreate(Request $request)
+//    {
+//        $name = $request->input('name');
+//        $email = $request->input('email');
+//        $password = $request->input('cityId');
+//
+//        if (empty($name) || empty($status) || empty($cityId)) {
+//            return [
+//                'status' => 400,
+//                'message' => "Bad request!"
+//            ];
+//        }
+//        else {
+//            $medic = new Medic();
+//            $data = $medic->createMedic($name, $status, $cityId);
+//            return  [
+//                'status' => 201,
+//                'data' => $data
+//            ];
+//        }
+//
+//    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function apiShow($id)
+    {
+        $medic = new Medic();
+        $data = $medic->getMedic($id);
+        if ($data) {
+            return [
+                'status' => 200,
+                'data' =>  $data
+            ];
+        }
+        else return [
+            'status' => 400,
+            'message' =>  "Bad request"
+        ];
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+//    public function apiUpdate(Request $request, $id)
+//    {
+//        $status = $request->input('status');
+//        $clinic = new Clinic();
+//        $clinicExists = $clinic->getClinic($id);
+//
+//        if (empty($status) || is_null($clinicExists))
+//        {
+//            return [
+//                'status' => 400,
+//                'message' =>  "Bad request"
+//            ];
+//        }
+//        else {
+//            $data = $clinic->updateClinic($id, $status);
+//
+//            return  [
+//                'status' => 201,
+//                'data' => $data
+//            ];
+//        }
+//
+//    }
+
+    public function apiDestroy($id)
+    {
+        $medic = new Medic();
+        $medicExists = $medic->getMedic($id);
+        if (is_null($medicExists)) {
+            return [
+                'status' => 400,
+                'message' =>  "Bad request"
+            ];
+        }
+        else {
+            $data = $medic->deleteMedic($id);
+            return  [
+                'status' => 204
+            ];
+        }
+
+    }
+
 }
