@@ -140,28 +140,33 @@ class MedicsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-//    public function apiCreate(Request $request)
-//    {
-//        $name = $request->input('name');
-//        $email = $request->input('email');
-//        $password = $request->input('cityId');
-//
-//        if (empty($name) || empty($status) || empty($cityId)) {
-//            return [
-//                'status' => 400,
-//                'message' => "Bad request!"
-//            ];
-//        }
-//        else {
-//            $medic = new Medic();
-//            $data = $medic->createMedic($name, $status, $cityId);
-//            return  [
-//                'status' => 201,
-//                'data' => $data
-//            ];
-//        }
-//
-//    }
+    public function apiCreate(Request $request)
+    {
+
+        $medicName = $request->input('medicName');
+        $email = $request->input('email');
+        $password = Hash::make($request->input('password'));
+        $phone_no = $request->input('phoneNo');
+        $status = $request->input('status');
+        $section = $request->input('section_id');
+
+
+        if (empty($medicName) || empty($email) || empty($phone_no) || empty($status) || empty($password) || empty($section)) {
+            return [
+                'status' => 400,
+                'message' => "Bad request!"
+            ];
+        }
+        else {
+            $medic = new Medic();
+            $data = $medic->createMedic($medicName, $email, $password, $phone_no, $status, $section);
+            return  [
+                'status' => 201,
+                'data' => $data
+            ];
+        }
+
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -194,29 +199,30 @@ class MedicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-//    public function apiUpdate(Request $request, $id)
-//    {
-//        $status = $request->input('status');
-//        $clinic = new Clinic();
-//        $clinicExists = $clinic->getClinic($id);
-//
-//        if (empty($status) || is_null($clinicExists))
-//        {
-//            return [
-//                'status' => 400,
-//                'message' =>  "Bad request"
-//            ];
-//        }
-//        else {
-//            $data = $clinic->updateClinic($id, $status);
-//
-//            return  [
-//                'status' => 201,
-//                'data' => $data
-//            ];
-//        }
-//
-//    }
+    public function apiUpdate(Request $request, $id)
+    {
+        $status = $request->input('status');
+        $phoneNo = $request->input('phoneNo');
+        $medic = new Medic();
+        $medicExists = $medic->getMedic($id);
+
+        if (empty($status) || empty($phoneNo) || is_null($medicExists))
+        {
+            return [
+                'status' => 400,
+                'message' =>  "Bad request"
+            ];
+        }
+        else {
+            $data = $medic->updateMedic($id, $status, $phoneNo);
+
+            return  [
+                'status' => 201,
+                'data' => $data
+            ];
+        }
+
+    }
 
     public function apiDestroy($id)
     {
