@@ -124,4 +124,82 @@ class AppointmentsController extends Controller
     }
 
 
+//--------------------------------------------------------------------------------------------------------------
+
+
+    // API METHODS
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function apiIndex()
+    {
+        $appointments = new Appointment();
+        $data = $appointments->getAppointments();
+
+        $response = [
+            'status' => 200,
+            'data' => $data
+        ];
+
+        return $response;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function apiCreate(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $medic_id = $request->input('medic_id');
+        $clinic_id = $request->input('clinic_id');
+        $section_id = $request->input('section_id');
+        $reason = $request->input('reason');
+        $date = $request->input('date');
+
+        if (empty($user_id) || empty($medic_id) || empty($clinic_id) || empty($section_id) || empty($date)) {
+            return [
+                'status' => 400,
+                'message' => "Bad request!"
+            ];
+        }
+        else {
+            $appointment = new Appointment();
+            $data = $appointment->createAppointment($user_id, $medic_id, $clinic_id, $section_id, $reason, $date );
+            return  [
+                'status' => 201,
+                'data' => $data
+            ];
+        }
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function apiShow($id)
+    {
+        $appointment = new Appointment();
+        $data = $appointment->getAppointment($id);
+        if ($data) {
+            return [
+                'status' => 200,
+                'data' =>  $data
+            ];
+        }
+        else return [
+            'status' => 400,
+            'message' =>  "Bad request"
+        ];
+    }
 }

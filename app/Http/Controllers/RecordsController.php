@@ -85,6 +85,52 @@ class RecordsController extends Controller
             return redirect()->route('showRecords', $id);
         }
     }
+//--------------------------------------------------------------------------------------------------------------
+
+
+    // API METHODS
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function apiIndex()
+    {
+        $records = new Record();
+        $data = $records->getRecords();
+
+        $response = [
+            'status' => 200,
+            'data' => $data
+        ];
+
+        return $response;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function apiShow($id)
+    {
+        $records = new Record();
+        $recordData = $records->getRecordsByUser($id);
+
+        if ($recordData) {
+            return [
+                'status' => 200,
+                'data' =>  $recordData
+            ];
+        }
+        else return [
+            'status' => 400,
+            'message' =>  "Bad request"
+        ];
+    }
 
 
 }

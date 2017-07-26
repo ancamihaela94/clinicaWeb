@@ -60,4 +60,85 @@ class UsersController extends Controller
         return redirect('/users');
     }
 
+
+
+
+    //------------------------------------------------------------------------------------
+
+
+    // API METHODS
+
+    public function apiIndex()
+    {
+        $user = new User();
+        $data = $user->getUsers();
+
+        $response = [
+            'status' => 200,
+            'data' => $data
+        ];
+
+        return $response;
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function apiShow($id)
+    {
+        $users = new User();
+
+        $data = $users->getUser($id);
+        if ($data) {
+            return [
+                'status' => 200,
+                'data' =>  $data
+            ];
+        }
+        else return [
+            'status' => 400,
+            'message' =>  "Bad request"
+        ];
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function apiUpdate(Request $request, $id)
+    {
+        $status = $request->input('status');
+        $users = new User();
+        $userExists = $users->getUser($id);
+        if (empty($status) || is_null($userExists))
+        {
+            return [
+                'status' => 400,
+                'message' =>  "Bad request"
+            ];
+        }
+        else {
+            $data = $users->updateUser($id, $status);
+
+            return  [
+                'status' => 201,
+                'data' => $data
+            ];
+        }
+
+    }
+
+
+
+
+
 }
