@@ -203,4 +203,32 @@ class AppointmentsController extends Controller
             'message' =>  "Bad request"
         ];
     }
+
+
+    public function apiUpdate($id) {
+
+        $medic_id = $request->input('medic_id');
+        $clinic_id = $request->input('clinic_id');
+        $section_id = $request->input('section_id');
+        $date = $request->input('date');
+        $status = $request->input('status');
+        $appointment = new Appointment();
+        $appointmentExists = $appointment->getAppointment($id);
+        if (empty($medic_id) || empty($clinic_id) || is_null($appointmentExists)) {
+            return [
+                'status' => 400,
+                'message' => "Bad request!"
+            ];
+        }
+
+        else {
+            $data = $appointment->updateAppointment($id, $medic_id, $clinic_id, $section_id, $date, $status);
+            return  [
+                'status' => 201,
+                'data' => $data
+            ];
+        }
+
+    }
+
 }
