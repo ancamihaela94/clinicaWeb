@@ -72,6 +72,13 @@ class User extends Authenticatable
         return $user;
     }
 
+    public function getUserByName($name) {
+
+        $user = DB::table('users')
+            ->where('name','=', $name)
+            ->get();
+    }
+
     public function getUser($id) {
 
         $user =DB::table('users')->find($id);
@@ -112,6 +119,16 @@ class User extends Authenticatable
         $typeCollection = $user->getUserType($id);
         $type = $typeCollection[0]->type;
         if ($type == 2 || $type == 1)
+            return true;
+
+        return false;
+    }
+
+    public function isUser($id) {
+        $user = new User();
+        $typeCollection = $user->getUserType($id);
+        $type = $typeCollection[0]->type;
+        if ($type == 3)
             return true;
 
         return false;

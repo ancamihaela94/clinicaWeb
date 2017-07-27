@@ -80,6 +80,7 @@ Route::get('/medics/delete/{id}', 'MedicsController@delete')->middleware('admin'
 //Users page routes
 Route::get('/users', 'UsersController@index')->middleware('medic');
 
+
 //Route::get('/users/add', 'UsersController@add')->middleware('medic');
 //Route::post('/users/add', 'UsersController@create')->middleware('medic');
 

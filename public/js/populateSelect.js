@@ -67,3 +67,39 @@ $('.medic-section-select').change( function() {
         }
     });
 });
+
+
+$('.clinics-select, .sections-select').change( function() {
+
+    var clinicId = $('.clinics-select').val();
+    var sectionId = $('.sections-select').val();
+    // console.log(sectionId);
+
+    $.ajax({
+
+        url: window.location.origin +  "api/clinics-sections/" + clinicId + "/" + sectionId +"/medics",
+
+
+        success: function(result){
+
+            $('.user-medic-select').empty();
+            $('.user-medic-select').append('<option value="0">Selecteaza o clinica</option>');
+
+            if (typeof result.data !== 'undefined') {
+
+                result.data.forEach(function(item, index) {
+
+                    var $option = $('<option value="' + item.id + '">' + item.name + '</option>');
+
+                    $('.user-medic-select').append($option);
+
+                });
+
+            }
+        },
+
+        error: function() {
+            console.log('error');
+        }
+    });
+});

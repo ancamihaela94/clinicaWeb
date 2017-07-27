@@ -44,6 +44,7 @@ Route::middleware('guest')->delete('/clinics/{id}', 'ClinicsController@apiDestro
 
 Route::middleware('guest')->get('/clinics/{id}/sections', 'SectionsController@apiGetSectionsByClinic');
 Route::middleware('guest')->get('/sections/{id}/clinics', 'SectionsController@apiGetClinicsBySection');
+Route::middleware('guest')->get('/clinics-sections/{id}/{sectionId}/medics', 'MedicsController@apiGetMedicBySectionAndClinic');
 
 
 

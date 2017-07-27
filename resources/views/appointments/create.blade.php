@@ -28,7 +28,7 @@
                             {{--<option value = "{{$section->id}}">{{$section->name}}</option>--}}
                             {{--@php   } @endphp--}}
                         </select>
-                        <select name="medic_id" value="">
+                        <select name="medic_id" value="" class = "user-medic-select">
                             <option value = "0">Selecteaza medicul</option>
                             @php foreach ($medics as $medic) { @endphp
                             <option value = "{{$medic->id}}">{{$medic->name}}</option>
@@ -38,31 +38,6 @@
 
                         <input type="text" placeholder= "Modiv" name="reason" value="" style="height:30px">
                         <input type="text" placeholder= "Data" name="date" value="" style="height:30px">
-
-
-                        {{--BOOTSTRAP DATE PICKER--}}
-                        {{--<div class="container">--}}
-                            {{--<div class="row">--}}
-                                {{--<div class='col-sm-6'>--}}
-                                    {{--<div class="form-group">--}}
-                                        {{--<div class='input-group date' id='datetimepicker1'>--}}
-                                            {{--<input type='text' class="form-control" />--}}
-                                            {{--<span class="input-group-addon">--}}
-                        {{--<span class="glyphicon glyphicon-calendar"></span>--}}
-                    {{--</span>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<script type="text/javascript">--}}
-                                    {{--$(function () {--}}
-                                        {{--$('#datetimepicker1').datetimepicker();--}}
-                                    {{--});--}}
-                                {{--</script>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-
-                        {{---------------------------------------------}}
 
                         <input type="submit" value="Submit" style = "margin-bottom: 10px" class="btn btn-default">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

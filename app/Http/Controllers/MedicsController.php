@@ -18,7 +18,7 @@ class MedicsController extends Controller
     public function index()
     {
         $medics = new Medic();
-        $data = $medics->getUserSection();
+        $data = $medics->getMedicSectionAndClinic();
         return view('medics/medics')->with(
             ['medics' => json_decode($data, true)]
         );
@@ -40,14 +40,15 @@ class MedicsController extends Controller
         $phone_no = $request->input('phoneNo');
         $status = $request->input('status');
         $section = $request->input('section_id');
+        $clinic = $request->input('clinic_id');
 
-        if (empty($medicName) || empty($email) || empty($phone_no) || empty($status) || empty($password) || empty($section)) {
+        if (empty($medicName) || empty($email) || empty($phone_no) || empty($status) || empty($password) || empty($section) || empty($clinic)) {
 
             Session::flash('error_message','Cadrul medical nu a putut fi adaugat!' );
         }
         else {
             $medics = new Medic();
-            $data = $medics->createMedic($medicName, $email, $password, $phone_no, $status, $section);
+            $data = $medics->createMedic($medicName, $email, $password, $phone_no, $status, $section,$clinic);
             Session::flash('flash_message','Cadrul medical a fost salvata cu succes!' );
 
         }
@@ -134,12 +135,9 @@ class MedicsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return array
      */
-
     public function apiCreate(Request $request)
     {
 
@@ -149,6 +147,7 @@ class MedicsController extends Controller
         $phone_no = $request->input('phoneNo');
         $status = $request->input('status');
         $section = $request->input('section_id');
+        $clinic = $request->input('clinic_id');
 
 
         if (empty($medicName) || empty($email) || empty($phone_no) || empty($status) || empty($password) || empty($section)) {
@@ -159,7 +158,7 @@ class MedicsController extends Controller
         }
         else {
             $medic = new Medic();
-            $data = $medic->createMedic($medicName, $email, $password, $phone_no, $status, $section);
+            $data = $medic->createMedic($medicName, $email, $password, $phone_no, $status, $section,$clinic);
             return  [
                 'status' => 201,
                 'data' => $data
@@ -169,10 +168,8 @@ class MedicsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return array
      */
 
     public function apiShow($id)
@@ -193,11 +190,9 @@ class MedicsController extends Controller
 
 
     /**
-     * Update the specified resource in storage.
-     *
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return array
      */
     public function apiUpdate(Request $request, $id)
     {
@@ -224,6 +219,10 @@ class MedicsController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function apiDestroy($id)
     {
         $medic = new Medic();
@@ -241,6 +240,21 @@ class MedicsController extends Controller
             ];
         }
 
+    }
+
+    /**
+     * @param $clinic_id
+     * @param $section_id
+     * @return array
+     */
+    public function apiGetMedicBySectionAndClinic($clinic_id, $section_id){
+
+        $medic = new Medic();
+        $medicData = $medic->getMedicBySectionAndClinic($section_id,$clinic_id);
+        return [
+            'status' => 200,
+            'data' => $medicData
+        ];
     }
 
 }

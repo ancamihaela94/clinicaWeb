@@ -48,7 +48,7 @@
                                 @endphp
                             <th>
                                 <a href = '/appointments/edit/{{$appointment['id']}}'><i class="icon-edit"></i> Editeaza </a>
-                                {{--<a href = '/appointments/delete/{{$appointment['id']}}' style = "padding-left: 10px;"><i class="icon-trash"></i> Sterge</a>--}}
+
                              </th>
                             </tr>
                             @endforeach
@@ -56,7 +56,7 @@
                         </tbody>
                     </table>
                 </div>
-            <a href="/appointments/add"> Adauga o noua programare </a>
+            <a href="/appointments/add" style ="margin-left:-100px;"> Adauga o noua programare </a>
             </div>
         </div>
     </div>

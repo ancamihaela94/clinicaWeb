@@ -28,7 +28,6 @@ class UsersController extends Controller
     {
 
         $users = new User();
-
         $data = $users->getUser($id);
 
         if ($data) {
@@ -43,6 +42,11 @@ class UsersController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
 
     public function update(Request $request, $id)
     {
@@ -81,24 +85,15 @@ class UsersController extends Controller
         return $response;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return array
      */
-
     public function apiShow($id)
     {
-        $medic = new Medic();
-        $data = $medic->getMedic($id);
+        $medic = new User();
+        $data = $medic->getUser($id);
         if ($data) {
             return [
                 'status' => 200,
@@ -117,7 +112,7 @@ class UsersController extends Controller
      *
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function apiUpdate(Request $request, $id)
     {
