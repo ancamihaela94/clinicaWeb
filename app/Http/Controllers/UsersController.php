@@ -81,6 +81,12 @@ class UsersController extends Controller
         return $response;
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     /**
      * Show the form for creating a new resource.
@@ -91,9 +97,8 @@ class UsersController extends Controller
 
     public function apiShow($id)
     {
-        $users = new User();
-
-        $data = $users->getUser($id);
+        $medic = new Medic();
+        $data = $medic->getMedic($id);
         if ($data) {
             return [
                 'status' => 200,
@@ -127,7 +132,7 @@ class UsersController extends Controller
             ];
         }
         else {
-            $data = $users->updateUser($id, $status);
+            $data = $medic->updateMedic($id, $status, $phoneNo);
 
             return  [
                 'status' => 201,

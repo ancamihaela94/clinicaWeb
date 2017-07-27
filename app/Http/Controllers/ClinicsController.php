@@ -155,8 +155,9 @@ class ClinicsController extends Controller
             Session::flash('error_message', 'Sectia nu a putut fi adaugata!');
             return redirect()->route('showSections', $id);
         } else {
+            $deletePreviousSections = $clinic->deleteAssociatedSections($id);
             foreach ($section_id as $sections){
-                $clinic = new Clinic();
+//                $clinic = new Clinic();
                 $sectionAssociate = $clinic->associateSection($id, $sections);
             }
             Session::flash('flash_message', 'Sectia a fost adaugata cu succes a fost salvata cu succes!');

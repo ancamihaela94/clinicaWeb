@@ -85,4 +85,36 @@ class User extends Authenticatable
             -> update (['status' => $status, 'updated_at' => Carbon::now()]);
         return $update;
     }
+
+
+
+    public function getUserType($id) {
+        $user_type = DB::table('users')
+            ->select ('users.type')
+            ->where ('id', $id)
+            ->get();
+        return $user_type;
+    }
+
+    public function isAdmin($id) {
+        $user = new User();
+        $typeCollection = $user->getUserType($id);
+        $type = $typeCollection[0]->type;
+        if ($type == 1 )
+            return true;
+
+        return false;
+    }
+
+
+    public function isMedic($id) {
+        $user = new User();
+        $typeCollection = $user->getUserType($id);
+        $type = $typeCollection[0]->type;
+        if ($type == 2 || $type == 1)
+            return true;
+
+        return false;
+    }
+
 }

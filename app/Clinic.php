@@ -114,5 +114,11 @@ class Clinic extends Model
         return $clinic;
     }
 
+    public function deleteAssociatedSections($clinic_id) {
+        $clinic = DB::table('clinics_sections')
+            ->where('clinic_id' ,'=', $clinic_id)
+            ->delete();
+    }
+
 
 }
