@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Section;
+use App\Clinic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -180,6 +181,10 @@ class SectionsController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function apiDestroy($id)
     {
         $section = new Section();
@@ -196,6 +201,17 @@ class SectionsController extends Controller
                 'status' => 204
             ];
         }
+
+    }
+
+    public function apiGetSectionsByClinic($id) {
+
+        $clinic = new Clinic();
+        $sectionsData = $clinic->getSections($id);
+        return [
+            'status' => 200,
+            'data' => $sectionsData
+        ];
 
     }
 }

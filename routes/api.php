@@ -39,3 +39,10 @@ Route::middleware('guest')->get('/clinics/{id}', 'ClinicsController@apiShow');
 Route::middleware('guest')->post('/clinics', 'ClinicsController@apiCreate');
 Route::middleware('guest')->post('/clinics/{id}', 'ClinicsController@apiUpdate');
 Route::middleware('guest')->delete('/clinics/{id}', 'ClinicsController@apiDestroy');
+
+
+
+Route::middleware('guest')->get('/clinics/{id}/sections', 'SectionsController@apiGetSectionsByClinic');
+
+
+

@@ -1,19 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    {{--<script>--}}
-        {{--function validateAppointmentsEditForm() {--}}
-            {{--var clinic_id = document.forms["appointmentsEditForm"]["clinic_id"].value;--}}
-            {{--var section_id = document.forms["appointmentsEditForm"]["section_id"].value;--}}
-            {{--var medic_id = document.forms["appointmentsEditForm"]["medic_id"].value;--}}
-            {{--var date = document.forms["appointmentsEditForm"]["date"].value;--}}
-            {{--if (clinic_id == 0 || section_id == 0 || medic_id == 0 || date == 0) {--}}
-                {{--alert("Completeaza toate datele si incearca din nou!");--}}
-                {{--return false;--}}
-            {{--}--}}
-        {{--}--}}
-    {{--</script>--}}
 <div class="container">
     <a href="/cities/add" value = "Add Cities"> </a>
 
@@ -53,7 +40,7 @@
                             <option value="1"> In procesare </option>
                             <option value="2"> Aprobata </option>
                         </select>
-                        <input type="submit" value="Submit" style = "margin-bottom: 10px; margin-left:10px;" class="btn btn-default" onclick="validateAppointmentsEditForm()">
+                        <input type="submit" value="Submit" style = "margin-bottom: 10px; margin-left:10px;" class="btn btn-default">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     </form>
                 </div>
@@ -61,5 +48,4 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/validations.js') }}"></script>
 @endsection
