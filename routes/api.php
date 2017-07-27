@@ -48,3 +48,30 @@ Route::middleware('guest')->get('/clinics-sections/{id}/{sectionId}/medics', 'Me
 
 
 
+Route::middleware('guest')->get('/sections', 'SectionsController@apiIndex');
+Route::middleware('guest')->get('/sections/{id}', 'SectionsController@apiShow');
+Route::middleware('guest')->post('/sections', 'SectionsController@apiCreate');
+Route::middleware('guest')->post('/sections/{id}', 'SectionsController@apiUpdate');
+Route::middleware('guest')->delete('/sections/{id}', 'SectionsController@apiDestroy');
+
+
+Route::middleware('guest')->get('/medics', 'MedicsController@apiIndex');
+Route::middleware('guest')->get('/medics/{id}', 'MedicsController@apiShow');
+Route::middleware('guest')->post('/medics', 'MedicsController@apiCreate');
+Route::middleware('guest')->post('/medics/{id}', 'MedicsController@apiUpdate');
+Route::middleware('guest')->delete('/medics/{id}', 'MedicsController@apiDestroy');
+
+
+Route::middleware('guest')->get('/users', 'UsersController@apiIndex');
+Route::middleware('guest')->get('/users/{id}', 'UsersController@apiShow');
+Route::middleware('guest')->post('/users/{id}', 'UsersController@apiUpdate');
+
+
+Route::middleware('guest')->get('/records', 'RecordsController@apiIndex');
+Route::middleware('guest')->get('/records/{id}', 'RecordsController@apiShow');
+
+
+Route::middleware('guest')->get('/appointments', 'AppointmentsController@apiIndex');
+Route::middleware('guest')->get('/appointments/{id}', 'AppointmentsController@apiShow');
+Route::middleware('guest')->post('/appointments', 'AppointmentsController@apiCreate');
+Route::middleware('guest')->post('/appointments/{id}', 'AppointmentsController@apiUpdate');
