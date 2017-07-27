@@ -34,7 +34,7 @@ class Appointment extends Model
     public function createAppointment($user_id, $medic_id, $clinic_id, $section_id, $reason, $date) {
 
         $appointments = DB::table('appointments')->insert(
-            ['user_id' => $user_id,'medic_id' => $medic_id, 'clinic_id'=> $clinic_id, 'section_id' => $section_id, 'reason' => $reason, 'date' => $date, 'created_at' => Carbon::now(),'updated_at' => Carbon::now() ]
+            ['user_id' => $user_id,'medic_id' => $medic_id, 'clinic_id'=> $clinic_id, 'section_id' => $section_id, 'reason' => $reason, 'date' => $date, 'status'=>1, 'created_at' => Carbon::now(),'updated_at' => Carbon::now() ]
         );
         return $appointments;
     }
@@ -45,11 +45,11 @@ class Appointment extends Model
         return $appointments;
     }
 
-    public function updateAppointment($id, $medic_id, $clinic_id, $section_id, $date) {
+    public function updateAppointment($id, $medic_id, $clinic_id, $section_id, $date,$status) {
 
         $update = DB::table('appointments')
             -> where ('id', $id)
-            -> update (['medic_id' => $medic_id, 'clinic_id' => $clinic_id,'section_id' => $section_id, 'date' => $date ,'updated_at' => Carbon::now()]);
+            -> update (['medic_id' => $medic_id, 'clinic_id' => $clinic_id,'section_id' => $section_id, 'date' => $date, 'status' => $status ,'updated_at' => Carbon::now()]);
         return $update;
     }
 
@@ -60,7 +60,7 @@ class Appointment extends Model
             ->join('users as medics', 'appointments.medic_id', '=', 'medics.id')
             ->join('clinics', 'appointments.clinic_id', '=', 'clinics.id')
             ->join('sections', 'appointments.section_id', '=', 'sections.id')
-            ->select(['appointments.id', 'users.name as users_name','medics.name as medic_name', 'clinics.name as clinic_name', 'sections.name as section_name', 'appointments.reason', 'appointments.date'])
+            ->select(['appointments.id', 'users.name as users_name','medics.name as medic_name', 'clinics.name as clinic_name', 'sections.name as section_name', 'appointments.reason', 'appointments.date', 'appointments.status'])
             ->get();
         return $appointments;
     }

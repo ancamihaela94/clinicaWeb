@@ -25,6 +25,7 @@
                             <th> Sectie </th>
                             <th> Motiv </th>
                             <th> Data </th>
+                            <th> Status </th>
                             <th> Actiuni </th>
                         </tr>
                         </thead>
@@ -38,6 +39,13 @@
                             <th>{{ $appointment['section_name'] }} </th>
                             <th>{{ $appointment['reason'] }} </th>
                             <th>{{ $appointment['date'] }} </th>
+                                @php
+                                    if ($appointment['status'] == 1)
+                                    {
+                                        echo " <th> In procesare </th>";
+                                    }
+                                    else echo "<th> Aprobata </th>";
+                                @endphp
                             <th>
                                 <a href = '/appointments/edit/{{$appointment['id']}}'><i class="icon-edit"></i> Editeaza </a>
                                 {{--<a href = '/appointments/delete/{{$appointment['id']}}' style = "padding-left: 10px;"><i class="icon-trash"></i> Sterge</a>--}}

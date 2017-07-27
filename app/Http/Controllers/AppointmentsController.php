@@ -66,7 +66,7 @@ class AppointmentsController extends Controller
         }
         else {
             $appointment = new Appointment();
-            $data = $appointment->createAppointment($user_id, $medic_id, $clinic_id, $section_id, $reason, $date );
+            $data = $appointment->createAppointment($user_id, $medic_id, $clinic_id, $section_id, $reason, $date);
             Session::flash('flash_message','Programarea a fost salvata cu succes!' );
 
         }
@@ -110,6 +110,7 @@ class AppointmentsController extends Controller
         $clinic_id = $request->input('clinic_id');
         $section_id = $request->input('section_id');
         $date = $request->input('date');
+        $status = $request->input('status');
         $appointment = new Appointment();
         $appointmentExists = $appointment->getAppointment($id);
         if (empty($medic_id) || empty($clinic_id) || is_null($appointmentExists)) {
@@ -117,7 +118,7 @@ class AppointmentsController extends Controller
         }
         else {
 
-            $data = $appointment->updateAppointment($id, $medic_id, $clinic_id, $section_id, $date);
+            $data = $appointment->updateAppointment($id, $medic_id, $clinic_id, $section_id, $date, $status);
             Session::flash('flash_message','Programarea a fost editata cu succes!' );
         }
         return redirect('/appointments');

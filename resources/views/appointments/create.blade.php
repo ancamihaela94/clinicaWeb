@@ -35,7 +35,7 @@
                             <option value = "{{$section->id}}">{{$section->name}}</option>
                             @php   } @endphp
                         </select>
-                        <input type="text" placeholder= "Motiv" name="reason" value="" style="height:30px">
+                        <input type="text" placeholder= "Modiv" name="reason" value="" style="height:30px">
                         <input type="text" placeholder= "Data" name="date" value="" style="height:30px">
 
 
