@@ -214,5 +214,18 @@ class SectionsController extends Controller
         ];
 
     }
+
+    public function apiGetClinicsBySection($id) {
+
+        $section = new Section();
+        $clinicData = $section->getClinicsBySection($id);
+        return [
+            'status' => 200,
+            'data' => $clinicData
+        ];
+
+    }
+
+
 }
 

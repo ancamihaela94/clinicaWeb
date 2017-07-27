@@ -20,12 +20,19 @@
                             <option value="1"> Activ</option>
                             <option value="2"> Inactiv</option>
                         </select>
-                        <select name="section_id" style="margin-right: 20px;margin-top:20px;  ">
+
+                        <select name="section_id" style="margin-right: 20px;margin-top:20px;  " class = "medic-section-select">
                         <option value = "0">Selecteaza o sectie</option>
                         @php foreach ($sections as $section) { @endphp
                         <option value = "{{$section->id}}">{{$section->name}}</option>
                         @php   } @endphp
                         </select>
+
+                        <select name="clinic_id" style="margin-right: 20px;margin-top:20px;  " class="medic-clinic-select">
+                            <option value = "0">Selecteaza o clinica</option>
+
+                        </select>
+
                         <input type="submit" value="Submit" style = " margin-bottom: 10px; margin-top:20px; " class="btn btn-default">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     </form>

@@ -52,5 +52,16 @@ class Section extends Model
     }
 
 
+    public function getClinicsBySection($id) {
+            $section = DB::table('clinics')
+                ->join('clinics_sections', 'clinics.id', '=', 'clinics_sections.clinic_id')
+                ->join('sections', 'sections.id', '=', 'clinics_sections.section_id')
+                ->select('clinics.id', 'clinics.name')
+                ->where('sections.id', '=', $id)
+                ->get();
+            return $section;
+    }
+
+
 
 }

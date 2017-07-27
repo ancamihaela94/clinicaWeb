@@ -11,18 +11,16 @@
                 <td class="panel-body">
                     <h3 style = "margin-left:10px;"> Editare programare {{$appointment->id}} </h3>
                     <form name="appointmentsEditForm" method ='post' action = "{{action('AppointmentsController@update', $appointment->id)}}">
-                        <select name="clinic_id" value="" style = "margin-right:10px;margin-left:10px;">
+                        <select name="clinic_id" value="" style = "margin-right:10px;margin-left:10px;" class="clinics-select">
                             <option value = "0">Selecteaza o clinica</option>
                             @php foreach ($clinics as $clinic) { @endphp
                             <option value = "{{$clinic->id}}">{{$clinic->name}}</option>
                             @php   } @endphp
                         </select>
 
-                        <select name="section_id" value=""style = "margin-right:10px;">
+                        <select name="section_id" value=""style = "margin-right:10px;"class="sections-select">
                             <option value = "0">Selecteaza o sectie</option>
-                            @php foreach ($sections as $section) { @endphp
-                            <option value = "{{$section->id}}">{{$section->name}}</option>
-                            @php   } @endphp
+
                         </select>
 
                         <select name="medic_id" value="" style = "margin-right:10px; margin-left:10px;">
