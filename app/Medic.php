@@ -28,7 +28,7 @@ class Medic extends Model
      ];
 
      public function getAllMedics() {
-         $medics = DB::table('users')->where('type', '=', 2)->get();
+         $medics = DB::table('users')->where('type', '=', 2)->orderBy('id', 'asc')->get();
          return $medics;
      }
 
@@ -67,6 +67,7 @@ class Medic extends Model
             ->join('clinics','users.clinic_id', '=','clinics.id')
             ->select(['users.id', 'users.name', 'users.email','users.phone_number','users.status', 'sections.name as section_name','clinics.name as clinic_name'])
             ->where('type', '=', 2)
+            ->orderBy('id','asc')
             ->get();
         return $sections;
 
@@ -80,6 +81,7 @@ class Medic extends Model
             ->select(['users.name', 'users.id'])
             ->where([
                 ['users.type','=','2'],
+                ['users.status','=', '1'],
                 ['section_id', '=',$section_id],
                 ['clinic_id', '=',$clinic_id],
             ])
