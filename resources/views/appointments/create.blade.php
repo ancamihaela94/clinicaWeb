@@ -33,7 +33,7 @@
                         </select>
                         <input required type="datetime-local" placeholder= "Data" name="date" value="" style="height:30px">
                         <br>
-                        <textarea required type="text" placeholder= "Motiv" name="reason" value="" col="4" style="width: 670px;" ></textarea>
+                        <textarea type="text" placeholder= "Motiv" name="reason" value="" col="4" style="width: 670px;" ></textarea>
 
 
 

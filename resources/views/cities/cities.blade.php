@@ -30,7 +30,7 @@
                             <th>{{ $city['name'] }} </th>
                                 <th>
                                     <a href = '/cities/edit/{{$city['id']}}'><i class="icon-edit"></i> Editeaza </a>
-                                    <a href = '/cities/delete/{{$city['id']}}' style = "padding-left: 10px;"><i class="icon-trash"></i> Sterge</a>
+                                    <a href = '/cities/delete/{{$city['id']}}' style = "padding-left: 10px;" onclick="return confirm('Esti sigur ca vrei sa stergi aceasta intrare?')"><i class="icon-trash"></i> Sterge</a>
                                 </th>
                             </tr>
                             @endforeach

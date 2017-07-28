@@ -46,7 +46,7 @@
                                 <th> {{$medic['clinic_name']}}</th>
                                 <th>
                                     <a href = '/medics/edit/{{$medic['id']}}'><i class="icon-edit"></i> Editeaza</a>
-                                    <a href = '/medics/delete/{{$medic['id']}}' style = "padding-left: 10px;"><i class="icon-trash"></i> Sterge</a>
+                                    <a href = '/medics/delete/{{$medic['id']}}' style = "padding-left: 10px;" onclick="return confirm('Esti sigur ca vrei sa stergi aceasta intrare?')"><i class="icon-trash"></i> Sterge</a>
                                 </th>
                             </tr>
                             @endforeach

@@ -30,7 +30,7 @@
                             <th>{{ $section['name'] }} </th>
                                 <th>
                                     <a href = '/sections/edit/{{$section['id']}}'><i class="icon-edit"></i> Editeaza</a>
-                                    <a href = '/sections/delete/{{$section['id']}}' style = "padding-left: 10px;"><i class="icon-trash"></i> Sterge</a>
+                                    <a href = '/sections/delete/{{$section['id']}}' style = "padding-left: 10px;" onclick="return confirm('Esti sigur ca vrei sa stergi aceasta intrare?')"><i class="icon-trash"></i> Sterge</a>
                                 </th>
                             </tr>
                             @endforeach

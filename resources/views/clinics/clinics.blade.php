@@ -41,7 +41,7 @@
                                 <th>
                                     <a href = '/clinics/edit/{{$clinic['id']}}'><i class="icon-edit"></i> Editeaza</a>
                                     <a href = '/clinics/show-sections/{{$clinic['id']}}'style="padding-left: 20px;"><i class="fa fa-bars" aria-hidden="true"></i> Asociere Sectii</a>
-                                    <a href = '/clinics/delete/{{$clinic['id']}}' style = "padding-left: 20px;"><i class="icon-trash"></i> Sterge</a>
+                                    <a href = '/clinics/delete/{{$clinic['id']}}' style = "padding-left: 20px;" onclick="return confirm('Esti sigur ca vrei sa stergi aceasta intrare?')"><i class="icon-trash"></i> Sterge</a>
                                 </th>
                             </tr>
                             @endforeach
