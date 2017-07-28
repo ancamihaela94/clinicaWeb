@@ -13,7 +13,7 @@ $('.clinics-select').change( function() {
         success: function(result){
 
             $('.sections-select').empty();
-            $('.sections-select').append('<option value="0">Selecteaza o sectie</option>');
+            $('.sections-select').append('<option value="">Selecteaza o sectie</option>');
 
             if (typeof result.data !== 'undefined') {
 
@@ -47,7 +47,7 @@ $('.medic-section-select').change( function() {
         success: function(result){
 
             $('.medic-clinic-select').empty();
-            $('.medic-clinic-select').append('<option value="0">Selecteaza o clinica</option>');
+            $('.medic-clinic-select').append('<option value="">Selecteaza o clinica</option>');
 
             if (typeof result.data !== 'undefined') {
 
@@ -69,21 +69,22 @@ $('.medic-section-select').change( function() {
 });
 
 
-$('.clinics-select, .sections-select').change( function() {
+$('.sections-select').change( function() {
 
     var clinicId = $('.clinics-select').val();
     var sectionId = $('.sections-select').val();
-    // console.log(sectionId);
+    console.log(sectionId);
 
     $.ajax({
 
-        url: window.location.origin +  "api/clinics-sections/" + clinicId + "/" + sectionId +"/medics",
-
+        url: window.location.origin +  "/api/clinics/" + clinicId + "/sections/" + sectionId + "/medics",
 
         success: function(result){
 
-            $('.user-medic-select').empty();
-            $('.user-medic-select').append('<option value="0">Selecteaza o clinica</option>');
+            console.log(result);
+
+            $('.medics-select').empty();
+            $('.medics-select').append('<option value="">Selecteaza medicul</option>');
 
             if (typeof result.data !== 'undefined') {
 
@@ -91,8 +92,7 @@ $('.clinics-select, .sections-select').change( function() {
 
                     var $option = $('<option value="' + item.id + '">' + item.name + '</option>');
 
-                    $('.user-medic-select').append($option);
-
+                    $('.medics-select').append($option);
                 });
 
             }

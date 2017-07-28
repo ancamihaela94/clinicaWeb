@@ -54,7 +54,7 @@
                         </tbody>
                     </table>
                 </div>
-            <a href="/medics/add" style = "margin-left: -150px;"> Adauga un nou cadru medical </a>
+            <a href="/medics/add" style = "margin-left: -150px;"><i class="fa fa-plus" aria-hidden="true"></i> Adauga un nou cadru medical </a>
             </div>
         </div>
     </div>

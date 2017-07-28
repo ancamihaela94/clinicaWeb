@@ -12,7 +12,7 @@
 
     <div class="row", style = 'margin-top: 50px;'>
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default" style="margin-left: -100px;margin-right: -100px;">
+            <div class="panel panel-default" style="margin-left: -200px;margin-right: -200px;">
                 <div class="panel-heading">Locatii</div>
                 <td class="panel-body">
                     <table class = "table">
@@ -48,6 +48,7 @@
                                 @endphp
                             <th>
                                 <a href = '/appointments/edit/{{$appointment['id']}}'><i class="icon-edit"></i> Editeaza </a>
+                                <a href = '/appointments/approve/{{$appointment['id']}}' style = "margin-left: 10px;"><i class="fa fa-cog" aria-hidden="true"></i> Editeaza statusul </a>
 
                              </th>
                             </tr>
@@ -56,7 +57,7 @@
                         </tbody>
                     </table>
                 </div>
-            <a href="/appointments/add" style ="margin-left:-100px;"> Adauga o noua programare </a>
+            <a href="/appointments/add" style ="margin-left:-200px;"><i class="fa fa-plus" aria-hidden="true"></i> Adauga o noua programare </a>
             </div>
         </div>
     </div>

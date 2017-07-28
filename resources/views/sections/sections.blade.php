@@ -38,7 +38,7 @@
                         </tbody>
                     </table>
                 </div>
-            <a href="/sections/add"> Adauga o sectie noua </a>
+            <a href="/sections/add"><i class="fa fa-plus" aria-hidden="true"></i> Adauga o sectie noua </a>
             </div>
         </div>
     </div>

@@ -40,7 +40,7 @@
                         </tbody>
                     </table>
     </div>
-            <a href="/records/add-records/{{$users->id}}"> Adauga o noua intrare </a>
+            <a href="/records/add-records/{{$users->id}}"><i class="fa fa-plus" aria-hidden="true"></i> Adauga o noua intrare </a>
 </div>
 
 

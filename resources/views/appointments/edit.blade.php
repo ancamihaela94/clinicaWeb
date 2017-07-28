@@ -23,11 +23,9 @@
 
                         </select>
 
-                        <select required name="medic_id" value="" style = "margin-right:10px; margin-left:10px;">
+                        <select required name="medic_id" value="" style = "margin-right:10px; margin-left:10px;" class = "medics-select">
                             <option value = "">Selecteaza medicul</option>
-                            @php foreach ($medics as $medic) { @endphp
-                            <option value = "{{$medic->id}}">{{$medic->name}}</option>
-                            @php   } @endphp
+
                         </select>
 
 

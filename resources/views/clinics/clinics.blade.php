@@ -49,7 +49,7 @@
                         </tbody>
                     </table>
                 </div>
-            <a href="/clinics/add", style="margin-left:-100px"> Adauga o clinica noua </a>
+            <a href="/clinics/add", style="margin-left:-100px"><i class="fa fa-plus" aria-hidden="true"></i> Adauga o clinica noua </a>
             </div>
         </div>
     </div>

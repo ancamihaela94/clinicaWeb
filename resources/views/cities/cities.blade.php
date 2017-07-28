@@ -38,7 +38,7 @@
                         </tbody>
                     </table>
                 </div>
-            <a href="/cities/add"> Adauga o noua locatie </a>
+            <a href="/cities/add"><i class="fa fa-plus" aria-hidden="true"></i> Adauga o noua locatie </a>
             </div>
         </div>
     </div>

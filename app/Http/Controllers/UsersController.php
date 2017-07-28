@@ -18,7 +18,7 @@ class UsersController extends Controller
         $users = new User();
         $data = $users->getUsers();
 
-        return view ('users/users') -> with([
+        return view ('users/users')-> with([
             'users' => json_decode($data, true)
         ]);
     }

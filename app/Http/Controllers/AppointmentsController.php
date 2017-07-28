@@ -124,6 +124,33 @@ class AppointmentsController extends Controller
         return redirect('/appointments');
     }
 
+    public function showUpdateStatus($id) {
+        $appointment = new Appointment();
+        $appointmentExists = $appointment->getAppointment($id);
+
+        if($appointmentExists) {
+            return view('appointments/editStatus')->with(['appointments' => $appointmentExists]);
+        }
+        else {
+            Session::flash('error_message','Programarea nu a putut fi gasita!' );
+            return redirect('/appointments');
+        }
+    }
+
+    public function updateStatus(Request $request, $id) {
+        $status = $request->input('status');
+        $appointment = new Appointment();
+        $appointmentExists = $appointment->getAppointment($id);
+
+        if(empty($status) || is_null($appointmentExists)){
+            Session::flash('error_message','Programarea nu a putut fi editata! Te rugam sa verifici datele introduse!' );
+        }
+        else {
+            $data = $appointment->updateAppointmentStatus($status, $id);
+            Session::flash('flash_message','Programarea a fost editata cu succes!' );
+        }
+        return redirect('/appointments');
+    }
 
 //--------------------------------------------------------------------------------------------------------------
 

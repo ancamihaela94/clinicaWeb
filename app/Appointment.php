@@ -65,5 +65,12 @@ class Appointment extends Model
         return $appointments;
     }
 
+    public function updateAppointmentStatus($status,$id) {
+        $appointment = DB::table('appointments')
+            ->where('id', $id)
+            ->update(['status' => $status]);
+        return $appointment;
+    }
+
 
 }

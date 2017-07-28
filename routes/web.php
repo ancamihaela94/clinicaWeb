@@ -99,6 +99,9 @@ Route::post('/appointments/add', 'AppointmentsController@create')->middleware('a
 Route::get('/appointments/edit/{id}', 'AppointmentsController@show')->middleware('admin');
 Route::post('/appointments/edit/{id}', 'AppointmentsController@update')->middleware('admin');
 
+Route::get('/appointments/approve/{id}', 'AppointmentsController@showUpdateStatus')->middleware('admin');
+Route::post('/appointments/approve/{id}', 'AppointmentsController@updateStatus')->middleware('admin');
+
 Route::get('/appointments/delete/{id}', 'AppointmentsController@delete')->middleware('admin');
 
 //--------------------------------------------------------------------------------------

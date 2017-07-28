@@ -48,7 +48,6 @@ class User extends Authenticatable
         $user = DB::table('users')
             ->select('id', 'name', 'email', 'type', 'remember_token')
             ->where('email', '=', $email)
-            ->paginate(15)
             ->get();
         return $user;
 

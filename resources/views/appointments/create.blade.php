@@ -28,16 +28,14 @@
                             {{--<option value = "{{$section->id}}">{{$section->name}}</option>--}}
                             {{--@php   } @endphp--}}
                         </select>
-                        <select required name="medic_id" value="" class = "user-medic-select">
+                        <select required name="medic_id" value="" class = "medics-select">
                             <option value = "">Selecteaza medicul</option>
-                            @php foreach ($medics as $medic) { @endphp
-                            <option value = "{{$medic->id}}">{{$medic->name}}</option>
-                            @php   } @endphp
                         </select>
-
-
-                        <input required type="text" placeholder= "Modiv" name="reason" value="" style="height:30px">
                         <input required type="datetime-local" placeholder= "Data" name="date" value="" style="height:30px">
+                        <br>
+                        <textarea required type="text" placeholder= "Motiv" name="reason" value="" col="4" style="width: 670px;" ></textarea>
+
+
 
                         <input type="submit" value="Submit" style = "margin-bottom: 10px" class="btn btn-default">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
