@@ -258,4 +258,21 @@ class AppointmentsController extends Controller
 
     }
 
+
+    public function apiGetAppointmentsByUserId($id) {
+        $appointment = new Appointment();
+        $appointmentExists = $appointment->getAppointmentsByUser($id);
+        if($appointmentExists) {
+            return [
+
+                    'status' => 200,
+                    'data' => $appointmentExists
+            ];
+        }
+        else  return [
+            'status' => 400,
+            'message' => "Bad request!"
+        ];
+    }
+
 }

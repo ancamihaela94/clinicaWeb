@@ -73,4 +73,11 @@ class Appointment extends Model
     }
 
 
+    public function getAppointmentsByUser($id) {
+        $appointments = DB::table('appointments')
+            ->where('user_id', $id)
+            ->get();
+        return $appointments;
+    }
+
 }
