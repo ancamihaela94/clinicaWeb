@@ -11,25 +11,25 @@
             <h3> Adauga un nou cadru medical</h3>
 
                     <form method ='post' action = "{{action('MedicsController@create')}}">
-                        <input type="text" placeholder= "Nume" name="medicName" value="" style="height:30px; margin-right: 20px;">
-                        <input type="text" placeholder= "Email" name="email" value="" style="height:30px; margin-right: 20px;">
-                        <input type="text" placeholder= "Password" name="password" value="qwerty123" style="height:30px; margin-right: 20px;">
-                        <input type="text" placeholder= "Nr Telefon" name="phoneNo" value="" style="height:30px; margin-right: 20px;">
-                        <select name="status" value="" style="margin-right: 20px; margin-top:20px; ">
-                            <option value="0"> Selecteaza disponibilitatea</option>
+                        <input type="text" placeholder= "Nume" name="medicName" value="" style="height:30px; margin-right: 20px;" required>
+                        <input type="email" placeholder= "Email" name="email" value="" style="height:30px; margin-right: 20px;" required>
+                        <input type="text" placeholder= "Password" name="password" value="qwerty123" style="height:30px; margin-right: 20px;" required>
+                        <input type="text" placeholder= "Nr Telefon" name="phoneNo" value="" style="height:30px; margin-right: 20px;" required>
+                        <select required name="status" value="" style="margin-right: 20px; margin-top:20px; ">
+                            <option value=""> Selecteaza disponibilitatea</option>
                             <option value="1"> Activ</option>
                             <option value="2"> Inactiv</option>
                         </select>
 
-                        <select name="section_id" style="margin-right: 20px;margin-top:20px;  " class = "medic-section-select">
-                        <option value = "0">Selecteaza o sectie</option>
+                        <select required name="section_id" style="margin-right: 20px;margin-top:20px;  " class = "medic-section-select">
+                        <option value = "">Selecteaza o sectie</option>
                         @php foreach ($sections as $section) { @endphp
                         <option value = "{{$section->id}}">{{$section->name}}</option>
                         @php   } @endphp
                         </select>
 
-                        <select name="clinic_id" style="margin-right: 20px;margin-top:20px;  " class="medic-clinic-select">
-                            <option value = "0">Selecteaza o clinica</option>
+                        <select required name="clinic_id" style="margin-right: 20px;margin-top:20px;  " class="medic-clinic-select">
+                            <option value = "">Selecteaza o clinica</option>
 
                         </select>
 

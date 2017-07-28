@@ -10,8 +10,8 @@
                 <div class="panel-body">
             <h3> Asociere sectii</h3>
                     <form method ='post' action = "{{action('ClinicsController@associateSections',$clinics->id)}}">
-                        <select name="section_id[]" value="" multiple>
-                            <option value = "0">Selecteaza o sectie</option>
+                        <select required name="section_id[]" value="" multiple>
+                            <option value = "">Selecteaza o sectie</option>
                             @php foreach ($sections as $section) { @endphp
                                 <option value = "{{$section->id}}">{{$section->name}}</option>
                             @php   } @endphp

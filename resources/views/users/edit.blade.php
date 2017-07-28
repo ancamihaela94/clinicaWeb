@@ -9,11 +9,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Cadre medicale</div>
                 <td class="panel-body">
-                    <h3> Editare Utilizator {{$user->name}} </h3>
+                    <h3 style="margin-left: 10px"> Editare Utilizator {{$user->name}} </h3>
                     <form method ='post' action = "{{action('UsersController@update', $user->id)}}">
-                        <input type="text" placeholder="Numar de telefon" name="phoneNo" value="" style="height:30px">
-                        <select name="status" value="">
-                            <option value="0"> Selecteaza disponibilitatea</option>
+                        <input required type="text" placeholder="Numar de telefon" name="phoneNo" value="" style="height:30px; margin-left: 10px;">
+                        <select required name="status" value="">
+                            <option value=""> Selecteaza disponibilitatea</option>
                             <option value="1"> Activ</option>
                             <option value="2"> Inactiv</option>
                         </select>

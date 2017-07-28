@@ -10,15 +10,15 @@
                 <div class="panel-body">
             <h3> Adauga o clinica noua</h3>
                     <form method ='post' action = "{{action('ClinicsController@create')}}">
-                        <input type="text" placeholder= "Denumirea Clinicii" name="clinicName" value="" style="height:30px">
-                        <select name="status" value="">
-                            <option value="0"> Selecteaza disponibilitatea</option>
+                        <input type="text" placeholder= "Denumirea Clinicii" name="clinicName" value="" style="height:30px" required>
+                        <select required name="status" value="" >
+                            <option value=""> Selecteaza disponibilitatea</option>
                             <option value="1"> Activ</option>
                             <option value="2"> Inactiv</option>
                         </select>
                         {{--<input type="text" placeholder= "Clinic Status" name="status" value="1">--}}
-                        <select name="cityId" value="">
-                            <option value = "0">Selecteaza o locatie</option>
+                        <select name="cityId" value="" required>
+                            <option value = "">Selecteaza o locatie</option>
                             @php foreach ($cities as $city) { @endphp
                                 <option value = "{{$city->id}}">{{$city->name}}</option>
                             @php   } @endphp

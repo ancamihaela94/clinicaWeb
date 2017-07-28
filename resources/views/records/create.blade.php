@@ -11,17 +11,17 @@
             <h3> Adauga o fisa medicala noua</h3>
                     <form method ='post' action = "{{action('RecordsController@createRecords', $users->id)}}">
 
-                        <select name="clinic_id" value="" style="margin-right:70px;" class="clinics-select">
-                            <option value = "0">Selecteaza o clinica</option>
+                        <select required name="clinic_id" value="" style="margin-right:70px;" class="clinics-select">
+                            <option value = "">Selecteaza o clinica</option>
                             @php foreach ($clinics as $clinic) { @endphp
                             <option value = "{{$clinic->id}}">{{$clinic->name}}</option>
                             @php   } @endphp
                         </select>
-                        <select name="section_id" value=""style="margin-right:50px;" class="sections-select">
-                            <option value = "0">Selecteaza o sectie</option>
+                        <select required name="section_id" value=""style="margin-right:50px;" class="sections-select">
+                            <option value = "">Selecteaza o sectie</option>
 
                         </select>
-                        <textarea rows="'15" cols="50" name="description" placeholder="Descriere" style = 'width: 515px;    height: 115px;'></textarea>
+                        <textarea required rows="'15" cols="50" name="description" placeholder="Descriere" style = 'width: 515px;    height: 115px;'></textarea>
 
 
                         <input type="submit" value="Submit" style = "margin-bottom: 10px" class="btn btn-default">
