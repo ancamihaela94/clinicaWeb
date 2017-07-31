@@ -13,6 +13,18 @@
     <div class="row", style = 'margin-top: 50px;'>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" style="margin-left: -100px;margin-right: -100px;">
+
+                <form method ='post' action = "{{action('UsersController@filterUsers')}}">
+                    <input type="text" placeholder= "Filtreaza dupa nume" name="name" value="" style="height:30px; margin-left:10px;margin-top:10px;" >
+                    <input type="text" placeholder= "Filtreaza dupa email" name="name" value="" style="height:30px; margin-left:10px;margin-top:10px;" >
+                    <input type="text" placeholder= "Filtreaza dupa Nr Telefon" name="name" value="" style="height:30px; margin-left:10px;margin-top:10px;" >
+                    <br>
+                    <input type="submit" value="Cauta" style = "margin-bottom: 10px; margin-left:10px;" class="btn btn-default">
+                    <input type="submit" value="Reseteaza" onclick="location.href='/users'" style = "margin-bottom: 10px" class="btn btn-default">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                </form>
+
+
                 <div class="panel-heading">Utilizatori</div>
                 <td class="panel-body">
                     <table class = "table">

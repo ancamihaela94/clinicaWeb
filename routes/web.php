@@ -79,6 +79,8 @@ Route::get('/medics/delete/{id}', 'MedicsController@delete')->middleware('admin'
 
 //Users page routes
 Route::get('/users', 'UsersController@index')->middleware('medic');
+Route::get('/users/filter', 'UsersController@filterUsers')->middleware('medic');
+Route::post('/users/filter', 'UsersController@filterUsers')->middleware('medic');
 
 
 //Route::get('/users/add', 'UsersController@add')->middleware('medic');

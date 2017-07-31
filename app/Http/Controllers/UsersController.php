@@ -64,6 +64,19 @@ class UsersController extends Controller
         return redirect('/users');
     }
 
+    public function filterUsers(Request $request)
+    {
+        $name = $request->input('name');
+        $user = new User();
+        $usersData = $user->getUserByName($name);
+
+
+        return view ('users/users')-> with([
+            'users' => json_decode($usersData, true)
+        ]);
+
+    }
+
 
 
 

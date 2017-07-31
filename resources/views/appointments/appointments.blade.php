@@ -13,7 +13,7 @@
     <div class="row", style = 'margin-top: 50px;'>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" style="margin-left: -200px;margin-right: -200px;">
-                <div class="panel-heading">Locatii</div>
+                <div class="panel-heading">Programari</div>
                 <td class="panel-body">
                     <table class = "table">
                         <thead>

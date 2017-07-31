@@ -43,11 +43,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static function getUserByEmail($email) {
+    public function getUserByEmail($email) {
 
         $user = DB::table('users')
             ->select('id', 'name', 'email', 'type', 'remember_token')
-            ->where('email', '=', $email)
+            ->where([
+                ['email', '=', $email],
+                ['type', '=', '3']
+            ])
             ->get();
         return $user;
 
@@ -74,8 +77,20 @@ class User extends Authenticatable
     public function getUserByName($name) {
 
         $user = DB::table('users')
-            ->where('name','=', $name)
+            ->where([
+                ['name','LIKE', '%'.$name.'%'],
+                ['type', '=', '3']
+            ])
+            ->orWhere([
+                ['email', 'LIKE','%'.$name.'%'],
+                ['type', '=', '3']
+            ])
+            ->orWhere([
+                ['phone_number', 'LIKE', '%'.$name.'%'],
+                ['type', '=', '3']
+            ])
             ->get();
+        return $user;
     }
 
     public function getUser($id) {
