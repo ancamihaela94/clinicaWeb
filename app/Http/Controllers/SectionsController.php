@@ -107,7 +107,7 @@ class SectionsController extends Controller
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
 
     public function apiCreate(Request $request)
@@ -134,7 +134,7 @@ class SectionsController extends Controller
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
 
     public function apiShow($id)
@@ -158,7 +158,7 @@ class SectionsController extends Controller
      *
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function apiUpdate(Request $request, $id)
     {

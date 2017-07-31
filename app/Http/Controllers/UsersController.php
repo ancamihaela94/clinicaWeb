@@ -66,13 +66,30 @@ class UsersController extends Controller
 
     public function filterUsers(Request $request)
     {
-        $name = $request->input('name');
         $user = new User();
-        $usersData = $user->getUserByName($name);
+        $data = $user->getUsers();
+        if($request->has('name')) {
+            $userName = $user->getUserByName($request->input('name'));
+            return view('users/users')->with([
+                'users' =>json_decode($userName, true)
+            ]);
+        }
+        if($request->has('email')) {
+            $userEmail = $user->getUserByName($request->input('email'));
+            return view('users/users')->with([
+                'users' =>json_decode($userEmail, true)
+            ]);
+        }
 
+        if($request->has('phone')) {
+            $userPhone = $user->getUserByName($request->input('phone'));
+            return view('users/users')->with([
+                'users' =>json_decode($userPhone, true)
+            ]);
+        }
 
-        return view ('users/users')-> with([
-            'users' => json_decode($usersData, true)
+        return view('users/users')->with([
+            'users' =>json_decode($data, true)
         ]);
 
     }

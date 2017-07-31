@@ -16,8 +16,8 @@
 
                 <form method ='post' action = "{{action('UsersController@filterUsers')}}">
                     <input type="text" placeholder= "Filtreaza dupa nume" name="name" value="" style="height:30px; margin-left:10px;margin-top:10px;" >
-                    <input type="text" placeholder= "Filtreaza dupa email" name="name" value="" style="height:30px; margin-left:10px;margin-top:10px;" >
-                    <input type="text" placeholder= "Filtreaza dupa Nr Telefon" name="name" value="" style="height:30px; margin-left:10px;margin-top:10px;" >
+                    <input type="text" placeholder= "Filtreaza dupa email" name="email" value="" style="height:30px; margin-left:10px;margin-top:10px;" >
+                    <input type="text" placeholder= "Filtreaza dupa Nr Telefon" name="phone" value="" style="height:30px; margin-left:10px;margin-top:10px;" >
                     <br>
                     <input type="submit" value="Cauta" style = "margin-bottom: 10px; margin-left:10px;" class="btn btn-default">
                     <input type="submit" value="Reseteaza" onclick="location.href='/users'" style = "margin-bottom: 10px" class="btn btn-default">

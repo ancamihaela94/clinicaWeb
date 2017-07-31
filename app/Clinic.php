@@ -102,7 +102,7 @@ class Clinic extends Model
         $clinic = DB::table('sections')
             ->join('clinics_sections', 'sections.id', '=', 'clinics_sections.section_id')
             ->join('clinics', 'clinics.id', '=', 'clinics_sections.clinic_id')
-            ->select('sections.id', 'sections.name')
+            ->select('sections.id', 'sections.name', 'sections.created_at', 'sections.updated_at')
             ->where('clinics.id', '=', $id)
             ->get();
         return $clinic;
