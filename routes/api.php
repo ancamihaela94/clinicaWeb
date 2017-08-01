@@ -74,5 +74,5 @@ Route::middleware('guest')->get('/records/{id}', 'RecordsController@apiShow'); /
 Route::middleware('guest')->get('/appointments', 'AppointmentsController@apiIndex');
 Route::middleware('guest')->get('/appointments/{id}', 'AppointmentsController@apiShow');
 Route::middleware('guest')->get('/user-appointments/{id}', 'AppointmentsController@apiGetAppointmentsByUserId');
-//Route::middleware('guest')->post('/appointments', 'AppointmentsController@apiCreate');
+Route::middleware('guest')->post('/appointments', 'AppointmentsController@apiCreate');
 //Route::middleware('guest')->post('/appointments/{id}', 'AppointmentsController@apiUpdate');

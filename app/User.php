@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function getUserByEmail($email) {
+    public static function getUserByEmail($email) {
 
         $user = DB::table('users')
             ->select('id', 'name', 'email', 'type', 'remember_token')
