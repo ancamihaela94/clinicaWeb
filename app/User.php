@@ -15,7 +15,7 @@ class User extends Authenticatable
      * Status values
      */
     const STATUS_ACTIVE = 1;
-    const STATUS_INACTIVE = 0;
+    const STATUS_INACTIVE = 2;
 
     /**
      * User types values
