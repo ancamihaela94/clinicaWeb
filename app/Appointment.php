@@ -75,6 +75,11 @@ class Appointment extends Model
 
     public function getAppointmentsByUser($id) {
         $appointments = DB::table('appointments')
+            ->join('users', 'appointments.user_id', '=', 'users.id')
+            ->join('users as medics', 'appointments.medic_id', '=', 'medics.id')
+            ->join('clinics', 'appointments.clinic_id', '=', 'clinics.id')
+            ->join('sections', 'appointments.section_id', '=', 'sections.id')
+            ->select(['appointments.id', 'users.name as users_name','medics.name as medic_name', 'clinics.name as clinic_name', 'sections.name as section_name', 'appointments.reason', 'appointments.date', 'appointments.status'])
             ->where('user_id', $id)
             ->get();
         return $appointments;

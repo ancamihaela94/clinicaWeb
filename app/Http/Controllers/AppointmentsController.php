@@ -159,7 +159,7 @@ class AppointmentsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return array
      */
 
     public function apiIndex()
@@ -179,8 +179,8 @@ class AppointmentsController extends Controller
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+     * @return array
+     *     */
 
     public function apiCreate(Request $request)
     {
@@ -212,7 +212,7 @@ class AppointmentsController extends Controller
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
 
     public function apiShow($id)
