@@ -68,6 +68,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone_number'=>$data['phone_number'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -83,13 +84,16 @@ class RegisterController extends Controller
     {
         $name = $request->input('name');
         $email = $request->input('email');
+        $phone_number = $request->input('phone_number');
         $password = $request->input('password');
 
         $user = User::create([
             'name' => $name,
             'email' => $email,
+            'phone_number'=>$phone_number,
             'password' => bcrypt($password),
         ]);
+
 
         Auth::login($user,true);
 

@@ -17,6 +17,9 @@ class isMedic
     {
         $user = $request->user();
         $userId = $user['id'];
+        if(is_null($userId)) {
+            return redirect ('login');
+        }
         if ( ! $request->user()->isMedic($userId)) {
             return redirect ('home');
         }
