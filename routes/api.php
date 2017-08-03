@@ -36,12 +36,13 @@ Route::middleware('guest')->get('/cities/{id}', 'CitiesController@apiShow');
 
 Route::middleware('guest')->get('/clinics', 'ClinicsController@apiIndex');
 Route::middleware('guest')->get('/clinics/{id}', 'ClinicsController@apiShow');
+
 //Route::middleware('guest')->post('/clinics', 'ClinicsController@apiCreate');
 //Route::middleware('guest')->post('/clinics/{id}', 'ClinicsController@apiUpdate');
 //Route::middleware('guest')->delete('/clinics/{id}', 'ClinicsController@apiDestroy');
 
 
-
+Route::middleware('guest')->get('/cities/{id}/clinics', 'ClinicsController@getClinicsByCityId');
 Route::middleware('guest')->get('/clinics/{id}/sections', 'SectionsController@apiGetSectionsByClinic');
 Route::middleware('guest')->get('/sections/{id}/clinics', 'SectionsController@apiGetClinicsBySection');
 Route::middleware('guest')->get('/clinics/{id}/sections/{sectionId}/medics', 'MedicsController@apiGetMedicBySectionAndClinic');

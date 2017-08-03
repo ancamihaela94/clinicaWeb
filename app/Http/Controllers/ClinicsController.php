@@ -178,7 +178,7 @@ class ClinicsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return array
      */
 
     public function apiIndex()
@@ -198,7 +198,7 @@ class ClinicsController extends Controller
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
 
     public function apiCreate(Request $request)
@@ -228,7 +228,7 @@ class ClinicsController extends Controller
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
 
     public function apiShow($id)
@@ -253,7 +253,7 @@ class ClinicsController extends Controller
      *
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function apiUpdate(Request $request, $id)
     {
@@ -295,6 +295,23 @@ class ClinicsController extends Controller
                 'status' => 204
             ];
         }
+
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function getClinicsByCityId($id){
+
+        $clinic = new Clinic();
+        $clinicsByCity = $clinic->getClinicsByCityId($id);
+        $response = [
+            'status' => 200,
+            'data' => $clinicsByCity
+        ];
+
+        return $response;
 
     }
 

@@ -120,5 +120,12 @@ class Clinic extends Model
             ->delete();
     }
 
+    public function getClinicsByCityId($city_id) {
+        $clinics = DB::table('clinics')
+            ->where('city_id','=', $city_id)
+            ->get();
+        return $clinics;
+    }
+
 
 }
