@@ -200,9 +200,11 @@ class AppointmentsController extends Controller
         else {
             $appointment = new Appointment();
             $data = $appointment->createAppointment($user_id, $medic_id, $clinic_id, $section_id, $reason, $date );
+            unset($data["updated_at"]);
+            unset($data["created_at"]);
             return  [
                 'status' => 201,
-                'data' => $data
+                'data' => [$data]
             ];
         }
 

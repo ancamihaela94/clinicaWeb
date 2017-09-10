@@ -42,7 +42,7 @@ class City extends Model
 
     public function getAllCities()
     {
-        $cities = City::all();
+        $cities = DB::table('cities')->get();
         return $cities;
     }
 

@@ -33,10 +33,9 @@ class Appointment extends Model
 
     public function createAppointment($user_id, $medic_id, $clinic_id, $section_id, $reason, $date) {
 
-        $appointments = DB::table('appointments')->insert(
-            ['user_id' => $user_id,'medic_id' => $medic_id, 'clinic_id'=> $clinic_id, 'section_id' => $section_id, 'reason' => $reason, 'date' => $date, 'status'=>1, 'created_at' => Carbon::now(),'updated_at' => Carbon::now() ]
-        );
-        return $appointments;
+        $data = ['user_id' => $user_id,'medic_id' => $medic_id, 'clinic_id'=> $clinic_id, 'section_id' => $section_id, 'reason' => $reason, 'date' => $date, 'status'=>1, 'created_at' => Carbon::now(),'updated_at' => Carbon::now() ];
+        $appointments = DB::table('appointments')->insert($data);
+        return $data;
     }
 
     public function getAppointment($id) {
