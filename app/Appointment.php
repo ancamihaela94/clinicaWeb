@@ -27,7 +27,9 @@ class Appointment extends Model
     ];
 
     public function getAllAppointments() {
-        $appointments = DB::table('appointments')->get();
+        $appointments = DB::table('appointments')
+            ->orderBy('id', 'asc')
+            ->get();
         return $appointments;
     }
 
@@ -60,6 +62,7 @@ class Appointment extends Model
             ->join('clinics', 'appointments.clinic_id', '=', 'clinics.id')
             ->join('sections', 'appointments.section_id', '=', 'sections.id')
             ->select(['appointments.id', 'users.name as users_name','medics.name as medic_name', 'clinics.name as clinic_name', 'sections.name as section_name', 'appointments.reason', 'appointments.date', 'appointments.status'])
+            ->orderBy('id', 'asc')
             ->get();
         return $appointments;
     }

@@ -70,6 +70,7 @@ class User extends Authenticatable
         $user = DB::table('users')
             ->select('id', 'name', 'email', 'phone_number','status')
             ->where('type', '=', 3)
+            ->orderBy('id', 'asc')
             ->get();
         return $user;
     }
